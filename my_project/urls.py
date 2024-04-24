@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, register_converter
-from main.views import test_page, html_page, cars_list, cars_details, hello, sum, convertor_format, demo_html, pagi
+from main.views import test_page, html_page, cars_list, cars_details, hello, sum, convertor_format, demo_html, pagi, recept
 from django.conf import settings
 from django.conf.urls.static import static
 from datetime import datetime
@@ -42,6 +42,7 @@ urlpatterns = [
     path('sum/<int:op1>/<int:op2>/', sum),
     path('convertor_format/<int:id>/<date:dt>/', convertor_format),
     path('pagi/', pagi),
+    path('recept/<str:opt1>/', recept),
 ]
 
 if settings.DEBUG:
