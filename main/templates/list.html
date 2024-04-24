@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Базовая разметка HTML</title>
+</head>
+<body>
+
+        {% for car in cars%}
+            <h2> {{car.model}}  </h2>
+            <h3> {{car.year}}  </h3>
+            <h3> {{car.color}}  </h3>
+            <h4> {{car.price}}  </h4>
+            <img src="{{ car.image.url }}" height="200" width="200">
+            <a href="{% url 'details' car_id=car.id %}"><button>Подробнее...</button></a>
+            <br>
+        {% endfor %}
+
+</body>
+</html>

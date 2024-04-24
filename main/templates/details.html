@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ car.model }} {{ car.color }} {{ car.year }}</title>
+</head>
+<body>
+    <img src="{{ car.image.url }}">
+    <h1>{{ car.model }} {{ car.color }} {{ car.year }}</h1>
+    <ul>
+        <li>Модель: {{ car.model }}</li>
+        <li>Цвет: {{ car.color }}</li>
+        <li>Год: {{ car.year }}</li>
+        <li>Цена: {{ car.price }}</li>
+    </ul>
+    <a href="{% url 'list' %}"><button>Вернуться к списку</button></a>
+</body>
+</html>
