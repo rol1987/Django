@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.core.paginator import Paginator 
 from django.http import HttpResponse, Http404
 
-from main.models import Car
+from main.models import Car, Car1, Person
 from datetime import datetime
+import random
 
 def test_page(requests):
     return HttpResponse('Привет!')
@@ -114,3 +115,36 @@ def recept(requests, opt1):
 #     'ингредиент2': количество2,
 #   }
 # }
+
+
+def create_car(requests):
+    car = Car1(
+        brand = random.choice(['B1', 'B2', 'B3']),
+        model = random.choice(['M1', 'M2', 'M3']),
+        color = random.choice(['C1', 'C2', 'C3']),
+        )
+    car.save()
+    return HttpResponse(f'Все получилось! новая машина {car.brand} {car.model}')
+
+def list_car(requests):
+    # car_objects = Car1.objects.all() # получаем все объекты из базы данных
+    # car_objects = Car1.objects.filter(brand = 'B1') # получаем объекты по критериям
+    # car_objects = Car1.objects.filter(brand__contains = '2') # получаем объекты по критериям: brand содержит цифру 2
+    car_objects = Car1.objects.filter(brand__startswith = 'B') # получаем объекты по критериям: brand начинается с подстроки B
+    cars = [f'{c.id}: {c.brand} {c.model}: {c.color} / {c.owners.count()}' for c in car_objects]
+    return HttpResponse('<br>'.join(cars))
+
+
+def create_person(request):
+    cars = Car1.objects.all()
+    for car in cars:
+        # Person(name='P', car = car).save() #Первый способ записи в базу
+        Person.objects.create(name='Q', car = car) #Второй способ записи в базу
+    
+    return HttpResponse('Все получилось!')
+ 
+
+def list_person(requests):
+    person_objects = Person.objects.all() # получаем объекты по критериям: brand начинается с подстроки B
+    person = [f'{p.id}: {p.name} {p.car}' for p in person_objects]
+    return HttpResponse('<br>'.join(person))
