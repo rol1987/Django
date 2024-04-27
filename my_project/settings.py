@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main', # Вручную указываем наше приложение, иначе будет ошибка, т.к. Django не сможет найти шаблоны внутри нашего приложения
+    
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'demoorm',
         'USER': 'postgres',
-        'PASSWORD': 'k0r01ev'
+        'PASSWORD': '1'
     }
 }
 

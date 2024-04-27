@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from datetime import datetime
 
+
 class DateConverter:
     regex = r'[0-9]{4}-[0-9]{2}-[0-9]{2}'
     format = '%Y-%m-%d'
@@ -47,6 +48,7 @@ urlpatterns = [
     path('list_car/', list_car),
     path('new_person/', create_person),
     path('list_person/', list_person),
+    
 ]
 
 if settings.DEBUG:
